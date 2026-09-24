@@ -1,0 +1,165 @@
+@import "tw-animate-css";
+@import "tailwindcss" source(none);
+
+@source "../src";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * PJ Ingeniería — design system
+ * Navy #0E3A4E / White / Light grey #F2F5F5 / Technical grey #6E7B82 / Teal #4FA8B6
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 2px);
+  --radius-md: var(--radius);
+  --radius-lg: calc(var(--radius) + 2px);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 6px);
+  --radius-3xl: calc(var(--radius) + 8px);
+  --radius-4xl: calc(var(--radius) + 10px);
+
+  --font-display: "Big Shoulders Display", "IBM Plex Sans", sans-serif;
+  --font-sans: "IBM Plex Sans", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+
+  --color-navy: var(--navy);
+  --color-navy-deep: var(--navy-deep);
+  --color-teal: var(--teal);
+  --color-surface: var(--surface);
+  --color-technical: var(--technical);
+
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+  --radius: 0.125rem;
+
+  --navy: oklch(0.333 0.0522 226.5);
+  --navy-deep: oklch(0.262 0.045 228);
+  --teal: oklch(0.679 0.0855 209);
+  --surface: oklch(0.9662 0.0035 197.1);
+  --technical: oklch(0.5629 0.0177 222);
+
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.262 0.045 228);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.262 0.045 228);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.262 0.045 228);
+  --primary: oklch(0.333 0.0522 226.5);
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.9662 0.0035 197.1);
+  --secondary-foreground: oklch(0.333 0.0522 226.5);
+  --muted: oklch(0.9662 0.0035 197.1);
+  --muted-foreground: oklch(0.5629 0.0177 222);
+  --accent: oklch(0.679 0.0855 209);
+  --accent-foreground: oklch(1 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(1 0 0);
+  --border: oklch(0.905 0.008 220);
+  --input: oklch(0.88 0.01 220);
+  --ring: oklch(0.679 0.0855 209);
+
+  --sidebar: oklch(0.9662 0.0035 197.1);
+  --sidebar-foreground: oklch(0.262 0.045 228);
+  --sidebar-primary: oklch(0.333 0.0522 226.5);
+  --sidebar-primary-foreground: oklch(1 0 0);
+  --sidebar-accent: oklch(0.679 0.0855 209);
+  --sidebar-accent-foreground: oklch(1 0 0);
+  --sidebar-border: oklch(0.905 0.008 220);
+  --sidebar-ring: oklch(0.679 0.0855 209);
+
+  /* Subtle contour-line texture for technical panels */
+  --texture-contour: repeating-radial-gradient(
+    circle at 30% 60%,
+    color-mix(in oklab, var(--teal) 18%, transparent) 0px,
+    color-mix(in oklab, var(--teal) 18%, transparent) 1px,
+    transparent 1px,
+    transparent 22px
+  );
+  --texture-grid: linear-gradient(
+      to right,
+      color-mix(in oklab, white 8%, transparent) 1px,
+      transparent 1px
+    ),
+    linear-gradient(to bottom, color-mix(in oklab, white 8%, transparent) 1px, transparent 1px);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+    overflow-x: hidden;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    line-height: 0.98;
+    text-transform: uppercase;
+  }
+}
+
+@utility label-tech {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+@utility panel-technical {
+  background-color: var(--navy);
+  background-image: var(--texture-contour);
+  position: relative;
+  overflow: hidden;
+}
+
+@utility diagonal-cut {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 3rem));
+}
